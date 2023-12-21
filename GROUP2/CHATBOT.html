@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Chatbot to purchase drone | CodingBySarah</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts Link For Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <button class="chatbot-toggler">
+      <span class="material-symbols-rounded">mode_comment</span>
+      <span class="material-symbols-outlined">close</span>
+    </button>
+    <div class="chatbot">
+      <header>
+        <h2>Chatbot</h2>
+        <span class="close-btn material-symbols-outlined">close</span>
+      </header>
+      <ul class="chatbox">
+        <li class="chat incoming">
+          <span class="material-symbols-outlined">smart_toy</span>
+          <p>Hi there 👋<br>How can I help you today?</p>
+        </li>
+      </ul>
+      <div class="chat-input">
+        <textarea placeholder="Enter a message..." spellcheck="false" required></textarea>
+        <span id="send-btn" class="material-symbols-rounded">send</span>
+      </div>
+   <style>
+body {
+  background-image: url('dji.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+</style>
+</style>
+  </body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        #chat-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #chat-box {
+            height: 300px;
+            overflow-y: scroll;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        #user-input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div id="chat-container">
+        <div id="chat-box"></div>
+
+      <div class="chat-input">
+        <input type="text" id="user-input" placeholder="Type your message...">
+        <span id="send-btn" class="material-symbols-rounded">send</span>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const chatBox = document.getElementById("chat-box");
+            const userInput = document.getElementById("user-input");
+
+            userInput.addEventListener("keyup", function (event) {
+                if (event.key === "Enter") {
+                    const userMessage = userInput.value;
+                    appendMessage("User", userMessage);
+
+                    // Check for predefined bot questions and provide responses
+                    const botResponse = getBotResponse(userMessage);
+                    appendMessage("Chatbot", botResponse);
+
+                    userInput.value = "";
+                }
+            });
+
+            function appendMessage(sender, message) {
+                const messageElement = document.createElement("div");
+                messageElement.innerHTML = `<strong>${sender}:</strong> ${message}`;
+                chatBox.appendChild(messageElement);
+                chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the bottom of the chat box
+            }
+
+            function getBotResponse(userMessage) {
+                // Simple logic to determine bot responses based on user input
+                if (userMessage.toLowerCase().includes("hello")) {
+                    return "Hello!Are You Interested To Buy A Drone?";
+                } else if (userMessage.toLowerCase().includes("yes")) {
+                    return "what range of your budget? ([1] <1000) ([2] <2000) ([3] <3000) ([4] <4000) ([5] >4000)";
+
+
+                     } else if (userMessage.toLowerCase().includes("1")) {
+                    return "here are the drone for you, click the number to explore more..   ([1] DJI TELLO) ([2] DJI TELLO BOOST COMBO)" ;
+                     } else if (userMessage.toLowerCase().includes("detail dji tello")) {
+                    return "The component in the drone that provide Aircraft x 1, Propellers (Pair) x 4, Propeller Guards (Set) x 1, Battery x 1, Micro USB Cable x 1, Propeller Removal Tool x 1" ;
+                      } else if (userMessage.toLowerCase().includes("detail dji tello boost combo")) {
+                    return " The component in the drone that provide Aircraft x 1, Propellers (Pair)x 4, Propeller Guards (Set)x 1, Battery x 3, Micro USB Cablex 1, Propeller Removal Toolx 1, Battery Charging Hub x 1" ;
+                  } else if (userMessage.toLowerCase().includes("price dji tello")) {
+                    return "The price RM499" ;
+                     } else if (userMessage.toLowerCase().includes("price dji tello boost combo")) {
+                    return " The price RM599" ;
+
+
+                     } else if (userMessage.toLowerCase().includes("2")) {
+                    return "here are the drone for you, click the number to explore more..   ([1] DJI MINI 2 SE) ([2] DJI MINI) ([3] DJI MAVIC FLY MORE COMBO )" ;
+                  } else if (userMessage.toLowerCase().includes("detail dji mini 2 se")) {
+                    return "The component in the drone that provide Takeoff  Weight  < 249 g, Battery Capacity 2600 mAh, Folded: 138×81×58 mm (L×W×H), Unfolded: 159×203×56 mm (L×W×H), Unfolded (with propellers): 245×289×56 mm (L×W×H) ";
+                     } else if (userMessage.toLowerCase().includes("detail dji mavic mini fly more combo ")) {
+                    return "The component in the drone that provide intelligent flight batteries, spare propellers, and micro USB cables. You also get the 360° Propeller Guard, two-way charging hub, DJI 18W USB charger, and a handy carrying bag."; 
+                     } else if (userMessage.toLowerCase().includes("price dji mini 2 se")) {
+                    return " The price RM2149" ;
+                     } else if (userMessage.toLowerCase().includes("price dji mavic mini fly more combo  ")) {
+                    return " The price RM1499" ;
+
+
+
+                  } else if (userMessage.toLowerCase().includes("3")) {
+                    return "here are the drone for you, click the number to explore more..   ([1] DJI MINI 3 FLY MORE COMBO PLUS) ([2] DJI AVATA) ([3] DJI MINI 3 PRO )" ;
+                  } else if (userMessage.toLowerCase().includes("detail dji mini 3 fly more combo plus ")) {
+                    return "The component in the drone that provide Under 249 g, Extended Battery Life, 4K HDR Video, True Vertical Shooting, Intelligent Features, 38kph (Level 5) Wind Resistance, Beginner-Friendly, Easy-To-Fly, and Easy-To-Use"; 
+                  } else if (userMessage.toLowerCase().includes("detail dji avata ")) {
+                    return "The component in the drone that provide Immersive Flight Experience, Intuitive Motion Control, 4K/60fps 155° Super-Wide FOV Videos, Powerful Video Stabilization, Weighs About 410 g, Lightweight and Portable, Enhanced Safety with Built-in Propeller Guard, 10km 1080p Low-Latency Video Transmission"; 
+                  } else if (userMessage.toLowerCase().includes("detail dji mini 3 pro ")) {
+                    return "The component in the drone that provide In the Box, DJI Mini 3 Pro × 1, DJI Mini 3 Pro Intelligent Flight Battery × 1, Spare Propellers (Pair) × 1, Gimbal Protector × 1, Type-C to Type-C PD Cable × 1, Screwdriver × 1, Screws × 6"; 
+
+
+                  } else if (userMessage.toLowerCase().includes("4")) {
+                    return "here are the drone for you, click the number to explore more..   ([1] DJI MINI 4 PRO) ([2] DJI MINI 2 FLY MORE COMBO) ([3] DJI MINI 3 PRO )" ;
+                    } else if (userMessage.toLowerCase().includes("detail dji mini 3 pro ")) {
+                    return "The component in the drone that provide Weighs Less than 249 g, Tri-Directional Obstacle Sensing (Forward/Backward/Downward), Record Up to 4K/60fps Video and 4K/30fps HDR Video, 34-min Max Flight Time, True Vertical Shooting, FocusTrack (ActiveTrack, Spotlight, and Point of Interest), MasterShots, Timelapse"; 
+                  } else if (userMessage.toLowerCase().includes("detail dji mini 4 pro ")) {
+                    return "The component in the drone that provide Under 249 g, 4K/60fps HDR True Vertical Shooting, Omnidirectional Obstacle Sensing, Extended Battery Life, 20km FHD Video Transmission, ActiveTrack 360°. In The BoX, DJI Mini 4 Pro × 1, DJI RC-N2 Remote Controller × 1, Intelligent Flight Battery × 1, Spare Propellers (Pair) × 1, Screws × 6, Screwdriver × 1, DJI RC-N2 RC Cable (USB-C Connector) × 1, DJI RC-N2 RC Cable (Lightning Connector) × 1, Type-C to Type-C PD Cable × 1, Gimbal Protector × 1, Propeller Holder × 1"; 
+
+
+                     } else if (userMessage.toLowerCase().includes("5")) {
+                    return "here are the drone for you, click the number to explore more..   ([1] DJI AIR 3) ([2] DJI MINI 4 PRO FLY MORE COMBO) ([3] DJI MAVIC 3 CLASSIC ) ([3] DJI AVATA PRO ) ([4]DJI MINI 3 PRO ) " ;
+                    } else if (userMessage.toLowerCase().includes("detail dji air 3 ")) {
+                    return "The component in the drone that provide In the Box is DJI Air 3 × 1, DJI RC-N2 Remote Controller × 1, DJI Air 3 Intelligent Flight Battery × 1, DJI Air 3 Low-Noise Propellers (Pair) × 3, DJI Air 3 Gimbal Protector × 1, Type-C to Type-C PD Cable × 1, DJI RC-N2 RC Cable (USB-C Connector) × 1, DJI RC-N2 RC Cable (Lightning Connector) × 1"; 
+                     } else if (userMessage.toLowerCase().includes("detail dji mini 4 pro fly more combo ")) {
+                    return "The component in the drone that provide In The Box have DJI Mini 4 Pro × 1, DJI RC 2 Remote Controller × 1, Intelligent Flight Battery Plus × 3, Two-Way Charging Hub × 1, Shoulder Bag × 1, USB-C Cable × 1, Spare Propellers (Pair) × 3, Screws × 18, Screwdriver × 1, Type-C to Type-C PD Cable × 1, Gimbal Protector × 1, Propeller Holder × 1"; 
+                     } else if (userMessage.toLowerCase().includes("detail dji mavic 3 classic ")) {
+                    return "The component in the drone that provide DJI Mavic 3 Classic × 1, DJI Mavic 3 Intelligent Flight Battery × 1, DJI RC × 1, DJI Mavic 3 Low-Noise Propellers (pair) × 3, DJI 65W Portable Charger × 1, USB-C Cable × 1, DJI Mavic 3 Classic Storage Cover × 1, Spare DJI RC Control Sticks (pair) × 1"; 
+                  } else if (userMessage.toLowerCase().includes("detail dji avata pro ")) {
+                    return "The component in the drone that provide Immersive Flight Experience, Intuitive Motion Control, 4K/60fps 155° Super-Wide FOV Videos, Powerful Video Stabilization, Weighs About 410 g, Lightweight and Portable, Enhanced Safety with Built-in Propeller Guard, 1080p/100fps video transmission quality: the lowest latency of 30 ms, Two 1080p Micro-OLED screens"; 
+                     } else if (userMessage.toLowerCase().includes("detail dji mini 3 pro ")) {
+                    return "The component in the drone that provide In the Box, DJI Mini 3 Pro × 1, DJI RC × 1, DJI Mini 3 Pro Intelligent Flight Battery × 1, Spare Propellers (Pair) × 1, Gimbal Protector × 1, Type-C to Type-C PD Cable × 1, Screwdriver × 1, Screws × 6, PGYTech UV Filter x1, PGYTech Landing Gear x1, Landing Pad (25cm) x1, CYNOVA Screen Protector x1, Sandisk Extreme 64GB x1, Fast Charger 30W x1 "; 
+                } else {
+                    return "I'm sorry, I didn't understand that.";
+                }
+
+            }
+        });
+    </script>
+</body>
+</html>
+ 
